@@ -1,0 +1,29 @@
+<div>
+    <div fxLayoutAlign="center center">
+      <mat-card style="width:500px">
+          <mat-card-header>
+              <mat-card-title>
+                  Регистрация
+              </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <form [formGroup]="form" >
+                <div fxLayout="column">
+                    <mat-form-field>
+                        <input matInput placeholder="Логин" [formControl]="form.get('login')">
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput type="password" placeholder="Пароль" [formControl]="form.get('password')">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Повторите пароль" [formControl]="form.get('secondPassword')">
+                      </mat-form-field>
+                </div>
+              </form>
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="registrate()">Регистрация</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>

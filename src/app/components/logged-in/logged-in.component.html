@@ -1,0 +1,37 @@
+<div *ngIf="userName; else notAuthenticated">
+    <div fxLayoutAlign="center center">
+      <mat-card style="width:500px">
+          <mat-card-header>
+              <mat-card-title>
+                  Привет, {{userName}}
+              </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              Аутентификация прошла успешно.
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-raised-button color="primary" (click)="logout()">Выйти из системы</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <ng-template #notAuthenticated>
+      <div fxLayoutAlign="center center">
+          <mat-card style="width:500px">
+              <mat-card-header>
+                  <mat-card-title>
+                      Вы не аутентифицированы.
+                  </mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                  Пожалуйста, аутентифицируйтесь.
+              </mat-card-content>
+              <mat-card-actions>
+                  <button mat-raised-button color="primary" (click)="goToLogin()">Перейти к логину</button>
+              </mat-card-actions>
+          </mat-card>
+        </div>
+  </ng-template>
+
+

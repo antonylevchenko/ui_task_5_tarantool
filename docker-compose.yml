@@ -1,0 +1,33 @@
+version: "3.1"
+
+services:
+  tarantool:
+    container_name: mytarantool
+    image: tarantool/tarantool:1.7
+    command: tarantool /usr/local/share/tarantool/app.init.lua
+    volumes:
+      - "C:/Users/anton.levchenko/Projects/University/ui/UI_task_5_Tarantool/Tarantool/data:/var/lib/tarantool/"
+      - "C:/Users/anton.levchenko/Projects/University/ui/UI_task_5_Tarantool/Tarantool/app:/usr/local/share/tarantool"
+    ports:
+      - "3301:3301"
+
+  mysql:
+    container_name: mymysql
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - "C:/Users/anton.levchenko/Projects/University/ui/UI_task_5_Tarantool/mysql/data:/var/lib/mysql/"
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+
+  mysql-admin:
+      container_name: myphpadmin
+      image: phpmyadmin/phpmyadmin
+      ports:
+        - "8081:80"
+      environment:
+        PMA_HOST: mysql
+        PMA_USER: root
+        PMA_PASSWORD: pass
